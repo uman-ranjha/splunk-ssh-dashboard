@@ -1,0 +1,13 @@
+# SSH Security Dashboard searches
+# Run each search with the time range set to All time.
+# Splunk does not extract src_ip on its own for these logs,
+# so each search uses rex to grab the IP after the word "from" first.
+
+# 1. Brute Force Attempts by IP
+index=main "Failed password" | rex "from (?<src_ip>[0-9.]+)" | stats count by src_ip
+
+# 2. Username Enumeration by IP
+index=main "Invalid user" | rex "from (?<src_ip>[0-9.]+)" | stats count by src_ip
+
+# 3. Successful Logins by IP
+index=main "Accepted" | rex "from (?<src_ip>[0-9.]+)" | stats count by src_ip
