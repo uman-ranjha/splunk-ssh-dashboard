@@ -45,8 +45,6 @@ There were 5 accepted logins in total.
 5. Run the searches in `searches.spl`. Set the time range to All time, because the logs are from Oct 23.
 6. Save each search as a dashboard panel. Use the titles in `searches.spl`.
 
-One thing to know: Splunk does not pull the IP out as a field on its own for these logs. Each search uses `rex` to grab the IP after the word `from` and save it as `src_ip` first.
-
 ## Searches
 
 All three searches are in `searches.spl`. They are the same searches the dashboard panels use.
